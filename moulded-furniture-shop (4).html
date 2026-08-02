@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kumar Plastics — Moulded Furniture for Home &amp; Office</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #FAF8F3;
+    --bg-alt: #F1EEE4;
+    --surface: #FFFFFF;
+    --surface-2: #ECE9DF;
+    --text: #211F1A;
+    --muted: #6B6A5F;
+    --line: rgba(33,31,26,0.12);
+    --leg: #3C3B34;
+
+    --teal: #2F8F82;
+    --mustard: #E0A93D;
+    --brick: #C1503A;
+    --cobalt: #3F6AA8;
+    --olive: #7C8C4B;
+
+    --accent: var(--teal);
+    --radius-lg: 28px;
+    --radius-md: 18px;
+    --radius-sm: 10px;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter', sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    letter-spacing:-0.01em;
+    margin:0;
+  }
+  .mono{
+    font-family:'IBM Plex Mono', monospace;
+  }
+  a{ color:inherit; text-decoration:none; }
+  img,svg{ display:block; max-width:100%; }
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+  section{ padding:96px 0; }
+  @media (max-width:720px){
+    section{ padding:64px 0; }
+    .wrap{ padding:0 20px; }
+  }
+
+  ::selection{ background:var(--accent); color:#111; }
+
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible{
+    outline:2px solid var(--accent);
+    outline-offset:3px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.001ms !important; transition-duration:0.001ms !important; }
+  }
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(250,248,243,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:20px 0;
+  }
+  .logo{
+    display:flex; align-items:center; gap:10px;
+    font-size:20px; font-weight:700;
+  }
+  .logo .mark{
+    width:30px; height:30px; border-radius:9px;
+    background:var(--accent);
+    display:inline-block;
+    transition:background .4s ease;
+  }
+  .nav-links{ display:flex; gap:36px; font-size:15px; color:var(--muted); }
+  .nav-links a:hover{ color:var(--text); }
+  .nav-cta{
+    padding:11px 22px;
+    background:var(--accent);
+    color:#12140f;
+    border-radius:999px;
+    font-weight:600;
+    font-size:14px;
+    transition:background .4s ease, transform .2s ease;
+    white-space:nowrap;
+  }
+  .nav-cta:hover{ transform:translateY(-1px); }
+  .menu-toggle{ display:none; background:none; border:none; color:var(--text); font-size:24px; }
+  @media (max-width:800px){
+    .nav-links{ display:none; }
+    .menu-toggle{ display:block; }
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding:80px 0 60px;
+    display:grid;
+    grid-template-columns:1.05fr 0.95fr;
+    gap:48px;
+    align-items:center;
+  }
+  @media (max-width:900px){
+    .hero{ grid-template-columns:1fr; padding-top:48px; }
+  }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px; letter-spacing:0.08em; text-transform:uppercase;
+    color:var(--muted);
+    border:1px solid var(--line);
+    border-radius:999px;
+    padding:6px 14px;
+    margin-bottom:22px;
+  }
+  .eyebrow::before{
+    content:''; width:7px; height:7px; border-radius:50%;
+    background:var(--accent); display:inline-block;
+  }
+  .hero h1{
+    font-size:clamp(38px, 5vw, 60px);
+    line-height:1.04;
+  }
+  .hero h1 span{ color:var(--accent); transition:color .4s ease; }
+  .hero p.lede{
+    margin-top:22px;
+    font-size:18px;
+    color:var(--muted);
+    max-width:44ch;
+  }
+  .hero-ctas{ display:flex; gap:14px; margin-top:32px; flex-wrap:wrap; }
+  .btn-primary{
+    padding:15px 28px;
+    background:var(--accent);
+    color:#12140f;
+    border-radius:999px;
+    font-weight:600;
+    font-size:15px;
+    border:none;
+    cursor:pointer;
+    transition:background .4s ease, transform .2s ease;
+  }
+  .btn-primary:hover{ transform:translateY(-1px); }
+  .btn-ghost{
+    padding:15px 28px;
+    border:1px solid var(--line);
+    border-radius:999px;
+    font-weight:600;
+    font-size:15px;
+    color:var(--text);
+    transition:border-color .3s ease;
+  }
+  .btn-ghost:hover{ border-color:var(--accent); }
+
+  /* colourway picker — the signature element */
+  .colourway{
+    margin-top:38px;
+  }
+  .colourway .label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px; text-transform:uppercase; letter-spacing:0.08em;
+    color:var(--muted);
+    margin-bottom:12px;
+    display:block;
+  }
+  .swatches{ display:flex; gap:12px; }
+  .swatch{
+    width:34px; height:34px; border-radius:10px;
+    border:2px solid transparent;
+    cursor:pointer;
+    transition:transform .2s ease, border-color .2s ease;
+    padding:0;
+  }
+  .swatch:hover{ transform:translateY(-3px); }
+  .swatch.active{ border-color:var(--text); }
+
+  /* Hero illustration: a moulded chair, built from rounded div shapes */
+  .rig{
+    position:relative;
+    aspect-ratio:1/1;
+    max-width:440px;
+    margin:0 auto;
+  }
+  .chair{
+    position:absolute; inset:0;
+  }
+  .chair .back{
+    position:absolute; left:18%; right:18%; top:6%; height:46%;
+    background:var(--accent);
+    border-radius:34px 34px 20px 20px;
+    transition:background .4s ease;
+    box-shadow: inset 0 -14px 22px rgba(0,0,0,0.18);
+  }
+  .chair .seat{
+    position:absolute; left:8%; right:8%; top:46%; height:16%;
+    background:var(--accent);
+    border-radius:22px;
+    transition:background .4s ease;
+    box-shadow: inset 0 -10px 16px rgba(0,0,0,0.15);
+  }
+  .chair .leg{
+    position:absolute; width:7%; height:34%; bottom:4%;
+    background:var(--leg);
+    border-radius:0 0 8px 8px;
+  }
+  .chair .leg.l1{ left:12%; }
+  .chair .leg.l2{ right:12%; }
+  .chair .leg.l3{ left:12%; bottom:4%; transform:translateY(-2px); opacity:.55; }
+  .chair .leg.l4{ right:12%; bottom:4%; transform:translateY(-2px); opacity:.55; }
+  .chair .mould-mark{
+    position:absolute; left:50%; top:16%; width:38px; height:6px;
+    background:rgba(0,0,0,0.18);
+    border-radius:4px;
+    transform:translateX(-50%);
+  }
+  .rig .spec{
+    position:absolute; bottom:-6px; left:0; right:0;
+    text-align:center;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px; color:var(--muted);
+    letter-spacing:0.04em;
+  }
+
+  /* ---------- Category band ---------- */
+  .categories{ background:var(--bg-alt); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+  .cat-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:24px;
+  }
+  @media (max-width:800px){ .cat-grid{ grid-template-columns:1fr; } }
+  .cat-card{
+    background:var(--surface);
+    border-radius:var(--radius-lg);
+    padding:40px;
+    border:1px solid var(--line);
+    transition:border-color .3s ease, transform .3s ease;
+  }
+  .cat-card:hover{ border-color:var(--accent); transform:translateY(-4px); }
+  .cat-card .tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:0.08em;
+  }
+  .cat-card h3{ font-size:28px; margin-top:10px; }
+  .cat-card p{ color:var(--muted); margin-top:12px; max-width:38ch; }
+  .cat-card .go{
+    margin-top:24px; display:inline-flex; align-items:center; gap:8px;
+    font-weight:600; color:var(--accent); font-size:14px;
+  }
+
+  /* ---------- Section headings ---------- */
+  .section-head{
+    display:flex; justify-content:space-between; align-items:flex-end;
+    margin-bottom:44px; gap:24px; flex-wrap:wrap;
+  }
+  .section-head h2{ font-size:clamp(28px,3.4vw,38px); }
+  .section-head .sub{ color:var(--muted); max-width:42ch; }
+  .section-head .idx{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px; color:var(--muted);
+    text-transform:uppercase; letter-spacing:0.08em;
+    margin-bottom:10px; display:block;
+  }
+
+  /* ---------- Product grid ---------- */
+  .grid-products{
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:22px;
+  }
+  @media (max-width:900px){ .grid-products{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:600px){ .grid-products{ grid-template-columns:1fr; } }
+  .product{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:var(--radius-md);
+    overflow:hidden;
+    transition:transform .3s ease, border-color .3s ease;
+  }
+  .product:hover{ transform:translateY(-4px); border-color:var(--line); }
+  .product .thumb{
+    height:180px;
+    display:flex; align-items:center; justify-content:center;
+    background:
+      radial-gradient(circle at 30% 20%, rgba(0,0,0,0.03), transparent 60%),
+      var(--surface-2);
+  }
+  .product .thumb svg{ width:76px; height:76px; }
+  .product .thumb .shape{
+    width:88px; height:88px; border-radius:24px;
+    background:var(--shape-color, var(--accent));
+  }
+  .product .info{ padding:20px; }
+  .product .name{ font-weight:600; font-size:16px; }
+  .product .meta{ color:var(--muted); font-size:13px; margin-top:6px; }
+  .product .row{ display:flex; justify-content:space-between; align-items:center; margin-top:16px; }
+  .product .price{ font-family:'IBM Plex Mono', monospace; font-size:14px; }
+  .dots{ display:flex; gap:6px; }
+  .dots span{ width:10px; height:10px; border-radius:50%; display:inline-block; }
+
+  /* ---------- Sector / type pills ---------- */
+  .pill-grid{
+    display:flex; flex-wrap:wrap; gap:12px;
+  }
+  .pill{
+    display:flex; align-items:center; gap:10px;
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:999px;
+    padding:12px 20px 12px 16px;
+    font-size:14.5px;
+    font-weight:500;
+  }
+  .pill .dot{
+    width:9px; height:9px; border-radius:50%;
+    background:var(--accent);
+    flex-shrink:0;
+  }
+  .type-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:16px;
+  }
+  @media (max-width:800px){ .type-grid{ grid-template-columns:repeat(2,1fr); } }
+  .type-card{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:var(--radius-md);
+    padding:24px;
+    text-align:center;
+  }
+  .type-card .ticon{
+    width:44px; height:44px; margin:0 auto 14px;
+  }
+  .type-card .tname{ font-weight:600; font-size:15.5px; }
+  .type-card .tdesc{ color:var(--muted); font-size:13px; margin-top:6px; }
+
+  /* ---------- Brand grid ---------- */
+  .brand-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:16px;
+  }
+  @media (max-width:900px){ .brand-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:520px){ .brand-grid{ grid-template-columns:1fr; } }
+  .brand-card{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:var(--radius-md);
+    padding:22px 24px;
+    display:flex; flex-direction:column; gap:10px;
+    transition:border-color .3s ease, transform .3s ease;
+  }
+  .brand-card.linkable{ cursor:pointer; }
+  .brand-card.linkable:hover{ border-color:var(--accent); transform:translateY(-3px); }
+  .brand-card .bname{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600; font-size:19px;
+  }
+  .brand-card .btags{ display:flex; gap:6px; flex-wrap:wrap; }
+  .brand-card .btag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px; text-transform:uppercase; letter-spacing:0.06em;
+    color:var(--muted);
+    border:1px solid var(--line);
+    border-radius:999px;
+    padding:3px 10px;
+  }
+  .brand-card .bnote{ color:var(--muted); font-size:13px; }
+  .brand-card .blink{
+    margin-top:auto;
+    font-size:13px; font-weight:600; color:var(--accent);
+    display:inline-flex; align-items:center; gap:6px;
+  }
+
+  /* ---------- Feature / spec strip ---------- */
+  .specs{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+    border-radius:var(--radius-md);
+    overflow:hidden;
+  }
+  @media (max-width:800px){ .specs{ grid-template-columns:repeat(2,1fr); } }
+  .spec-cell{
+    background:var(--surface);
+    padding:32px 26px;
+  }
+  .spec-cell .num{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:26px; color:var(--accent);
+  }
+  .spec-cell .lbl{ margin-top:10px; font-weight:600; font-size:15px; }
+  .spec-cell .desc{ margin-top:6px; color:var(--muted); font-size:13.5px; }
+
+  /* ---------- Steps (real sequence — numbering justified) ---------- */
+  .steps{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+  @media (max-width:800px){ .steps{ grid-template-columns:1fr; } }
+  .step{
+    border:1px solid var(--line);
+    border-radius:var(--radius-md);
+    padding:30px;
+    position:relative;
+  }
+  .step .n{
+    font-family:'IBM Plex Mono', monospace;
+    color:var(--accent); font-size:14px;
+  }
+  .step h3{ font-size:19px; margin-top:14px; }
+  .step p{ color:var(--muted); margin-top:8px; font-size:14.5px; }
+
+  /* ---------- Testimonials ---------- */
+  .quotes{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+  @media (max-width:900px){ .quotes{ grid-template-columns:1fr; } }
+  .quote{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:var(--radius-md);
+    padding:28px;
+  }
+  .quote p{ font-size:15.5px; color:var(--text); }
+  .quote .who{ margin-top:18px; color:var(--muted); font-size:13.5px; }
+
+  /* ---------- Contact ---------- */
+  .contact-grid{
+    display:grid; grid-template-columns:0.9fr 1.1fr; gap:48px;
+  }
+  @media (max-width:900px){ .contact-grid{ grid-template-columns:1fr; } }
+  .contact-info .item{ margin-bottom:22px; }
+  .contact-info .k{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px; text-transform:uppercase; letter-spacing:0.08em;
+    color:var(--muted);
+  }
+  .contact-info .v{ font-size:17px; margin-top:6px; }
+
+  form{ display:flex; flex-direction:column; gap:16px; }
+  .field{ display:flex; flex-direction:column; gap:8px; }
+  .field label{ font-size:13px; color:var(--muted); }
+  .field input, .field textarea, .field select{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:var(--radius-sm);
+    padding:13px 16px;
+    color:var(--text);
+    font-family:'Inter', sans-serif;
+    font-size:15px;
+  }
+  .field textarea{ resize:vertical; min-height:100px; }
+  .row-2{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  @media (max-width:520px){ .row-2{ grid-template-columns:1fr; } }
+  .submit{
+    align-self:flex-start;
+    margin-top:6px;
+  }
+
+  /* ---------- Footer ---------- */
+  footer{
+    border-top:1px solid var(--line);
+    padding:40px 0;
+  }
+  .foot-row{
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;
+    color:var(--muted); font-size:13.5px;
+  }
+  .foot-links{ display:flex; gap:22px; }
+  .foot-links a:hover{ color:var(--text); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="logo"><span class="mark" id="logoMark"></span>Kumar Plastics</div>
+    <nav class="nav-links">
+      <a href="#home-range">Home range</a>
+      <a href="#office-range">Office range</a>
+      <a href="#brands">Brands</a>
+      <a href="kumar-plastics-catalogue-directory.pdf" download>Catalogues</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="#contact" class="nav-cta">Get catalogue</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero" style="padding-top:0;padding-bottom:0;">
+    <div>
+      <span class="eyebrow">Injection-moulded · single-piece frame</span>
+      <h1>Furniture, <span id="heroSpan">moulded</span><br>to outlast the moment.</h1>
+      <p class="lede">Chairs, tables and storage for home and office, formed from one solid piece of UV-stable polymer — no screws to loosen, no joints to creak.</p>
+      <div class="hero-ctas">
+        <a href="#home-range" class="btn-primary">Browse the range</a>
+        <a href="#contact" class="btn-ghost">Request a quote</a>
+      </div>
+      <div class="colourway">
+        <span class="label">Pick a colourway — chair updates live</span>
+        <div class="swatches" id="swatchRow">
+          <button class="swatch active" style="background:#2F8F82" data-color="#2F8F82" aria-label="Teal"></button>
+          <button class="swatch" style="background:#E0A93D" data-color="#E0A93D" aria-label="Mustard"></button>
+          <button class="swatch" style="background:#C1503A" data-color="#C1503A" aria-label="Brick"></button>
+          <button class="swatch" style="background:#3F6AA8" data-color="#3F6AA8" aria-label="Cobalt"></button>
+          <button class="swatch" style="background:#7C8C4B" data-color="#7C8C4B" aria-label="Olive"></button>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="rig">
+        <div class="chair">
+          <div class="back"></div>
+          <div class="mould-mark"></div>
+          <div class="seat"></div>
+          <div class="leg l3"></div>
+          <div class="leg l4"></div>
+          <div class="leg l1"></div>
+          <div class="leg l2"></div>
+        </div>
+        <div class="spec">MODEL CX-04 · 46×52×86 CM · 4.1 KG</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="categories">
+  <div class="wrap cat-grid">
+    <div class="cat-card" id="home-range">
+      <svg viewBox="0 0 100 100" fill="none" stroke="#2F8F82" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" style="width:52px;height:52px;margin-bottom:6px;">
+        <path d="M28 14 h30 a6 6 0 0 1 6 6 v22 h-42 v-22 a6 6 0 0 1 6 -6 z"/>
+        <path d="M22 42 h56 a4 4 0 0 1 4 4 v10 a4 4 0 0 1 -4 4 h-56 a4 4 0 0 1 -4 -4 v-10 a4 4 0 0 1 4 -4 z"/>
+        <path d="M26 60 l-4 26 M74 60 l4 26"/>
+      </svg>
+      <span class="tag">Home range</span>
+      <h3>Living, dining &amp; balcony</h3>
+      <p>Stackable chairs, dining sets, storage cabinets and outdoor stools built to handle sun, spills and daily use.</p>
+      <a href="#" class="go">View home catalogue →</a>
+    </div>
+    <div class="cat-card" id="office-range">
+      <svg viewBox="0 0 100 100" fill="none" stroke="#3F6AA8" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" style="width:52px;height:52px;margin-bottom:6px;">
+        <path d="M14 34 h72 v8 h-72 z"/>
+        <path d="M20 42 v34 M80 42 v34"/>
+        <rect x="26" y="46" width="20" height="26" rx="3"/>
+      </svg>
+      <span class="tag">Office range</span>
+      <h3>Desks, seating &amp; storage</h3>
+      <p>Task chairs, modular desks and filing units designed for long hours and easy reconfiguration.</p>
+      <a href="#" class="go">View office catalogue →</a>
+    </div>
+  </div>
+</section>
+
+<section id="brands">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="idx">Brands we stock</span>
+        <h2>Multi-brand dealer, one shop</h2>
+      </div>
+      <p class="sub">We stock across these moulded-furniture manufacturers — tap through to see full official catalogues, or ask us in-store for stock and pricing.</p>
+    </div>
+    <div style="display:flex; gap:14px; flex-wrap:wrap; margin-bottom:28px;">
+      <a href="kumar-plastics-catalogue-directory.pdf" download class="btn-primary" style="display:inline-flex; align-items:center; gap:8px;">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 19h16"/></svg>
+        Download PDF catalogue
+      </a>
+    </div>
+    <div class="brand-grid">
+      <a class="brand-card linkable" href="https://www.nilkamalfurniture.com/" target="_blank" rel="noopener">
+        <div class="bname">Nilkamal</div>
+        <div class="btags"><span class="btag">Home</span><span class="btag">Office</span></div>
+        <div class="bnote">World's largest moulded furniture manufacturer.</div>
+        <div class="blink">View catalogue →</div>
+      </a>
+      <a class="brand-card linkable" href="https://www.supreme.co.in/furniture" target="_blank" rel="noopener">
+        <div class="bname">Supreme</div>
+        <div class="btags"><span class="btag">Home</span><span class="btag">Outdoor</span></div>
+        <div class="bnote">Injection, roto &amp; blow-moulded resin furniture.</div>
+        <div class="blink">View catalogue →</div>
+      </a>
+      <a class="brand-card linkable" href="https://italica.com/" target="_blank" rel="noopener">
+        <div class="bname">Italica</div>
+        <div class="btags"><span class="btag">Home</span><span class="btag">Office</span></div>
+        <div class="bnote">Designer and folding-series plastic chairs.</div>
+        <div class="blink">View catalogue →</div>
+      </a>
+      <a class="brand-card linkable" href="https://www.mangochair.com/" target="_blank" rel="noopener">
+        <div class="bname">Mango</div>
+        <div class="btags"><span class="btag">Home</span></div>
+        <div class="bnote">Premium, medium &amp; economy chair ranges.</div>
+        <div class="blink">View catalogue →</div>
+      </a>
+      <a class="brand-card linkable" href="https://celloworld.com/landing-home-furniture" target="_blank" rel="noopener">
+        <div class="bname">Cello</div>
+        <div class="btags"><span class="btag">Home</span><span class="btag">Storage</span></div>
+        <div class="bnote">Chairs, stools, tables and storage units.</div>
+        <div class="blink">View catalogue →</div>
+      </a>
+      <a class="brand-card linkable" href="https://maharajamoldedfurniture.com/" target="_blank" rel="noopener">
+        <div class="bname">Maharaja</div>
+        <div class="btags"><span class="btag">Home</span><span class="btag">Office</span></div>
+        <div class="bnote">100+ chair designs for home and commercial use.</div>
+        <div class="blink">View catalogue →</div>
+      </a>
+      <a class="brand-card linkable" href="https://primaplastics.com/" target="_blank" rel="noopener">
+        <div class="bname">Prima</div>
+        <div class="btags"><span class="btag">Home</span><span class="btag">Outdoor</span></div>
+        <div class="bnote">Furniture manufacturer since 1995, exports worldwide.</div>
+        <div class="blink">View catalogue →</div>
+      </a>
+      <a class="brand-card linkable" href="https://www.avrofurniture.com/" target="_blank" rel="noopener">
+        <div class="bname">Avro</div>
+        <div class="btags"><span class="btag">Home</span><span class="btag">Office</span></div>
+        <div class="bnote">Budget-friendly moulded chairs, tables &amp; sets.</div>
+        <div class="blink">View catalogue →</div>
+      </a>
+      <a class="brand-card linkable" href="https://amvifurniture.com/home" target="_blank" rel="noopener">
+        <div class="bname">Amvi</div>
+        <div class="btags"><span class="btag">Home</span></div>
+        <div class="bnote">Durable, stylish moulded plastic furniture.</div>
+        <div class="blink">View catalogue →</div>
+      </a>
+      <a class="brand-card linkable" href="https://www.nationalplastic.com/" target="_blank" rel="noopener">
+        <div class="bname">National</div>
+        <div class="btags"><span class="btag">Home</span><span class="btag">Office</span><span class="btag">Events</span></div>
+        <div class="bnote">Cafe, restaurant, event and party chair ranges since 1987.</div>
+        <div class="blink">View catalogue →</div>
+      </a>
+      <a class="brand-card linkable" href="https://www.hellomouldedfurniture.com/index.html" target="_blank" rel="noopener">
+        <div class="bname">Hello</div>
+        <div class="btags"><span class="btag">Home</span><span class="btag">Outdoor</span></div>
+        <div class="bnote">Moulded chairs, tables, stools &amp; kids' range.</div>
+        <div class="blink">View catalogue →</div>
+      </a>
+      <div class="brand-card">
+        <div class="bname">Katch</div>
+        <div class="btags"><span class="btag">Home</span></div>
+        <div class="bnote">Ask us in-store for the current range.</div>
+      </div>
+      <a class="brand-card linkable" href="https://diamondfurnitures.com/" target="_blank" rel="noopener">
+        <div class="bname">Diamond Furnitures</div>
+        <div class="btags"><span class="btag">Home</span><span class="btag">Office</span></div>
+        <div class="bnote">Since 2011 — injection-moulded plastic furniture.</div>
+        <div class="blink">View catalogue →</div>
+      </a>
+      <a class="brand-card linkable" href="https://www.sunrisemouldedfurniture.com/" target="_blank" rel="noopener">
+        <div class="bname">Sunrise</div>
+        <div class="btags"><span class="btag">Home</span><span class="btag">Office</span></div>
+        <div class="bnote">Chairs, stools, tables &amp; restaurant seating.</div>
+        <div class="blink">View catalogue →</div>
+      </a>
+      <div class="brand-card">
+        <div class="bname">Omaxe</div>
+        <div class="btags"><span class="btag">Office</span></div>
+        <div class="bnote">Ask us in-store for the current range.</div>
+      </div>
+      <a class="brand-card linkable" href="https://uttamfurniture.com/" target="_blank" rel="noopener">
+        <div class="bname">Uttam Power</div>
+        <div class="btags"><span class="btag">Home</span><span class="btag">Office</span></div>
+        <div class="bnote">By Uttam Furniture — ISO-certified, 2000+ partners.</div>
+        <div class="blink">View catalogue →</div>
+      </a>
+      <a class="brand-card linkable" href="https://www.sunrisemouldedfurniture.com/" target="_blank" rel="noopener">
+        <div class="bname">Impact</div>
+        <div class="btags"><span class="btag">Home</span><span class="btag">Office</span></div>
+        <div class="bnote">By Dev Plast Industries — sister brand to Sunrise.</div>
+        <div class="blink">View catalogue →</div>
+      </a>
+      <div class="brand-card">
+        <div class="bname">Ravika</div>
+        <div class="btags"><span class="btag">Home</span></div>
+        <div class="bnote">Ask us in-store for the current range.</div>
+      </div>
+      <div class="brand-card">
+        <div class="bname">Oneplast</div>
+        <div class="btags"><span class="btag">Home</span></div>
+        <div class="bnote">Ask us in-store for the current range.</div>
+      </div>
+      <div class="brand-card">
+        <div class="bname">Averra</div>
+        <div class="btags"><span class="btag">Home</span><span class="btag">Office</span></div>
+        <div class="bnote">Ask us in-store for the current range.</div>
+      </div>
+      <a class="brand-card linkable" href="https://naturepolyplast.com/century" target="_blank" rel="noopener">
+        <div class="bname">Century</div>
+        <div class="btags"><span class="btag">Home</span></div>
+        <div class="bnote">By Century Polyplast — sister brand to Nature.</div>
+        <div class="blink">View catalogue →</div>
+      </a>
+      <a class="brand-card linkable" href="https://naturefurniture.in/" target="_blank" rel="noopener">
+        <div class="bname">Nature</div>
+        <div class="btags"><span class="btag">Home</span><span class="btag">Office</span></div>
+        <div class="bnote">By Nature Polyplast — chairs, tables, stools.</div>
+        <div class="blink">View catalogue →</div>
+      </a>
+      <a class="brand-card linkable" href="https://www.charuindustries.com/plastic-big-chair-8964892.html" target="_blank" rel="noopener">
+        <div class="bname">Charu Gold</div>
+        <div class="btags"><span class="btag">Home</span></div>
+        <div class="bnote">By Charu Industries — stackable PP big chairs.</div>
+        <div class="blink">View catalogue →</div>
+      </a>
+      <div class="brand-card">
+        <div class="bname">Aura Gold</div>
+        <div class="btags"><span class="btag">Home</span></div>
+        <div class="bnote">Ask us in-store for the current range.</div>
+      </div>
+      <div class="brand-card">
+        <div class="bname">Morlek</div>
+        <div class="btags"><span class="btag">Home</span></div>
+        <div class="bnote">Ask us in-store for the current range.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--bg-alt); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="idx">Where our furniture goes</span>
+        <h2>Sectors we supply</h2>
+      </div>
+      <p class="sub">Bulk orders for any of these — sizes, colourways and delivery timelines vary by venue type.</p>
+    </div>
+    <div class="pill-grid">
+      <span class="pill"><span class="dot"></span>Cafe</span>
+      <span class="pill"><span class="dot"></span>Restaurant</span>
+      <span class="pill"><span class="dot"></span>Wedding &amp; events</span>
+      <span class="pill"><span class="dot"></span>Stadium</span>
+      <span class="pill"><span class="dot"></span>Railway station</span>
+      <span class="pill"><span class="dot"></span>Airport</span>
+      <span class="pill"><span class="dot"></span>Mall</span>
+      <span class="pill"><span class="dot"></span>Public park</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="idx">Material options</span>
+        <h2>Choose your type</h2>
+      </div>
+      <p class="sub">Every category above is available across these build types.</p>
+    </div>
+    <div class="type-grid">
+      <div class="type-card">
+        <svg class="ticon" viewBox="0 0 100 100" fill="none" stroke="#2F8F82" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><rect x="24" y="24" width="52" height="52" rx="16"/></svg>
+        <div class="tname">Moulded</div>
+        <div class="tdesc">Single-piece injection-moulded plastic</div>
+      </div>
+      <div class="type-card">
+        <svg class="ticon" viewBox="0 0 100 100" fill="none" stroke="#3F6AA8" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M24 76 V40 M76 76 V40 M24 40 h52"/><circle cx="24" cy="30" r="6"/><circle cx="76" cy="30" r="6"/></svg>
+        <div class="tname">Steel</div>
+        <div class="tdesc">Powder-coated steel frames</div>
+      </div>
+      <div class="type-card">
+        <svg class="ticon" viewBox="0 0 100 100" fill="none" stroke="#C1503A" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><rect x="22" y="30" width="56" height="40" rx="14"/></svg>
+        <div class="tname">Cushioned</div>
+        <div class="tdesc">Padded seating for extra comfort</div>
+      </div>
+      <div class="type-card">
+        <svg class="ticon" viewBox="0 0 100 100" fill="none" stroke="#7C8C4B" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" opacity="0.6"><rect x="24" y="24" width="52" height="52" rx="16"/></svg>
+        <div class="tname">Transparent</div>
+        <div class="tdesc">Clear acrylic-look moulded pieces</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="idx">Bestsellers</span>
+        <h2>Six that leave the warehouse fastest</h2>
+      </div>
+      <p class="sub">A mix of home and office pieces — every model ships in all five colourways above.</p>
+    </div>
+    <div class="grid-products">
+      <div class="product">
+        <div class="thumb">
+          <svg viewBox="0 0 100 100" fill="none" stroke="#2F8F82" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M28 14 h30 a6 6 0 0 1 6 6 v22 h-42 v-22 a6 6 0 0 1 6 -6 z"/>
+            <path d="M22 42 h56 a4 4 0 0 1 4 4 v10 a4 4 0 0 1 -4 4 h-56 a4 4 0 0 1 -4 -4 v-10 a4 4 0 0 1 4 -4 z"/>
+            <path d="M26 60 l-4 26 M74 60 l4 26"/>
+          </svg>
+        </div>
+        <div class="info">
+          <div class="name">Nest Stackable Chair</div>
+          <div class="meta">by Nilkamal · Home · dining &amp; balcony</div>
+          <div class="row"><span class="price">₹ ---</span>
+            <div class="dots"><span style="background:#2F8F82"></span><span style="background:#E0A93D"></span><span style="background:#C1503A"></span></div>
+          </div>
+        </div>
+      </div>
+      <div class="product">
+        <div class="thumb">
+          <svg viewBox="0 0 100 100" fill="none" stroke="#E0A93D" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="20" y="14" width="60" height="66" rx="6"/>
+            <path d="M50 14 v66 M20 40 h60 M20 60 h60"/>
+            <path d="M42 50 h4 M42 70 h4 M54 50 h4 M54 70 h4"/>
+          </svg>
+        </div>
+        <div class="info">
+          <div class="name">Ledge Storage Cabinet</div>
+          <div class="meta">by Cello · Home · living room</div>
+          <div class="row"><span class="price">₹ ---</span>
+            <div class="dots"><span style="background:#3F6AA8"></span><span style="background:#7C8C4B"></span></div>
+          </div>
+        </div>
+      </div>
+      <div class="product">
+        <div class="thumb">
+          <svg viewBox="0 0 100 100" fill="none" stroke="#C1503A" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
+            <ellipse cx="50" cy="28" rx="34" ry="10"/>
+            <path d="M50 38 v20 M36 58 l-8 24 M64 58 l8 24 M50 58 l-6 24 M50 58 l6 24"/>
+          </svg>
+        </div>
+        <div class="info">
+          <div class="name">Patio Round Table</div>
+          <div class="meta">by Prima · Home · balcony &amp; outdoor</div>
+          <div class="row"><span class="price">₹ ---</span>
+            <div class="dots"><span style="background:#2F8F82"></span><span style="background:#C1503A"></span></div>
+          </div>
+        </div>
+      </div>
+      <div class="product">
+        <div class="thumb">
+          <svg viewBox="0 0 100 100" fill="none" stroke="#3F6AA8" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M32 12 h36 a5 5 0 0 1 5 5 v24 a5 5 0 0 1 -5 5 h-36 a5 5 0 0 1 -5 -5 v-24 a5 5 0 0 1 5 -5 z"/>
+            <path d="M30 46 h40 l-4 12 h-32 z"/>
+            <path d="M50 58 v14"/>
+            <path d="M50 72 l-18 8 M50 72 l18 8 M50 72 l-14 -4 M50 72 l14 -4 M50 72 v10"/>
+            <circle cx="32" cy="82" r="2.4"/><circle cx="68" cy="82" r="2.4"/><circle cx="36" cy="68" r="2.4"/><circle cx="64" cy="68" r="2.4"/><circle cx="50" cy="84" r="2.4"/>
+          </svg>
+        </div>
+        <div class="info">
+          <div class="name">Pivot Task Chair</div>
+          <div class="meta">by Supreme · Office · seating</div>
+          <div class="row"><span class="price">₹ ---</span>
+            <div class="dots"><span style="background:#3F6AA8"></span><span style="background:#7C8C4B"></span></div>
+          </div>
+        </div>
+      </div>
+      <div class="product">
+        <div class="thumb">
+          <svg viewBox="0 0 100 100" fill="none" stroke="#7C8C4B" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 34 h72 v8 h-72 z"/>
+            <path d="M20 42 v34 M80 42 v34"/>
+            <rect x="26" y="46" width="20" height="26" rx="3"/>
+            <path d="M36 54 h0 M26 62 h20"/>
+          </svg>
+        </div>
+        <div class="info">
+          <div class="name">Modular Desk Unit</div>
+          <div class="meta">by Avro · Office · workstations</div>
+          <div class="row"><span class="price">₹ ---</span>
+            <div class="dots"><span style="background:#E0A93D"></span><span style="background:#7C8C4B"></span></div>
+          </div>
+        </div>
+      </div>
+      <div class="product">
+        <div class="thumb">
+          <svg viewBox="0 0 100 100" fill="none" stroke="#2F8F82" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="26" y="14" width="48" height="58" rx="5"/>
+            <path d="M26 32 h48 M26 50 h48"/>
+            <path d="M46 23 h8 M46 41 h8 M46 59 h8"/>
+            <circle cx="34" cy="82" r="5"/><circle cx="66" cy="82" r="5"/>
+          </svg>
+        </div>
+        <div class="info">
+          <div class="name">Filecase Storage Trolley</div>
+          <div class="meta">by Italica · Office · storage</div>
+          <div class="row"><span class="price">₹ ---</span>
+            <div class="dots"><span style="background:#2F8F82"></span><span style="background:#3F6AA8"></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="durability">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="idx">Why moulded plastic</span>
+        <h2>One piece. No weak joints.</h2>
+      </div>
+      <p class="sub">Every product is formed in a single mould cycle, which is what makes it hold up to daily wear.</p>
+    </div>
+    <div class="specs">
+      <div class="spec-cell">
+        <div class="num">1-PC</div>
+        <div class="lbl">Single-piece frame</div>
+        <div class="desc">No screws, welds or glue joints to work loose over time.</div>
+      </div>
+      <div class="spec-cell">
+        <div class="num">UV+</div>
+        <div class="lbl">UV-stabilised</div>
+        <div class="desc">Colour and strength hold up under direct sun for outdoor use.</div>
+      </div>
+      <div class="spec-cell">
+        <div class="num">Stack</div>
+        <div class="lbl">Space-saving</div>
+        <div class="desc">Chairs and stools nest for easy storage between uses.</div>
+      </div>
+      <div class="spec-cell">
+        <div class="num">Wipe</div>
+        <div class="lbl">Easy to clean</div>
+        <div class="desc">Non-porous surface wipes clean with just soap and water.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--bg-alt); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="idx">How to order</span>
+        <h2>From enquiry to delivery</h2>
+      </div>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <span class="n">01</span>
+        <h3>Browse &amp; shortlist</h3>
+        <p>Pick pieces from the home or office range and note the colourway you want.</p>
+      </div>
+      <div class="step">
+        <span class="n">02</span>
+        <h3>Send an enquiry</h3>
+        <p>Share your list and quantity through the form below or over WhatsApp.</p>
+      </div>
+      <div class="step">
+        <span class="n">03</span>
+        <h3>Delivered to your door</h3>
+        <p>We confirm stock, pack, and ship — with tracking shared once it's out.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="idx">From customers</span>
+        <h2>What buyers say</h2>
+      </div>
+    </div>
+    <div class="quotes">
+      <div class="quote">
+        <p>"Ordered stacking chairs for our cafe — two years of daily use and still no cracks."</p>
+        <div class="who">— Placeholder review, home range</div>
+      </div>
+      <div class="quote">
+        <p>"Set up an entire office floor with their desks and task chairs in under a week."</p>
+        <div class="who">— Placeholder review, office range</div>
+      </div>
+      <div class="quote">
+        <p>"The colour options meant we could match our showroom without repainting anything."</p>
+        <div class="who">— Placeholder review, home range</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap contact-grid">
+    <div class="contact-info">
+      <span class="idx" style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;display:block;margin-bottom:18px;">Get in touch</span>
+      <h2 style="font-size:32px; margin-bottom:28px;">Ask about stock, bulk pricing or a custom colourway.</h2>
+      <div class="item">
+        <div class="k">Phone / WhatsApp</div>
+        <div class="v">+91 99866 87552</div>
+      </div>
+      <div class="item">
+        <div class="k">Email</div>
+        <div class="v">kumarplastic2003@gmail.com</div>
+      </div>
+      <div class="item">
+        <div class="k">Showroom</div>
+        <div class="v">Raja Hothora, Kothi, Raniganj, Rajendra Nagar, Lucknow, Uttar Pradesh 226004</div>
+      </div>
+      <div class="item">
+        <div class="k">Hours</div>
+        <div class="v">Open daily, 10:00 AM – 10:00 PM</div>
+      </div>
+    </div>
+    <form onsubmit="return handleSubmit(event)">
+      <div class="row-2">
+        <div class="field">
+          <label for="name">Name</label>
+          <input id="name" type="text" placeholder="Your name" required>
+        </div>
+        <div class="field">
+          <label for="phone">Phone</label>
+          <input id="phone" type="tel" placeholder="Your phone number" required>
+        </div>
+      </div>
+      <div class="field">
+        <label for="interest">What are you looking for?</label>
+        <select id="interest">
+          <option>Home furniture</option>
+          <option>Office furniture</option>
+          <option>Both</option>
+          <option>Bulk / dealer enquiry</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="message">Message</label>
+        <textarea id="message" placeholder="Products, quantity, and any colour preference"></textarea>
+      </div>
+      <button type="submit" class="btn-primary submit">Send enquiry</button>
+    </form>
+  </div>
+  <div class="wrap" style="margin-top:48px;">
+    <div style="border:1px solid var(--line); border-radius:var(--radius-md); overflow:hidden;">
+      <iframe
+        src="https://maps.google.com/maps?q=Kumar%20Plastics%20Raja%20Hothora%20Kothi%20Raniganj%20Rajendra%20Nagar%20Lucknow%20Uttar%20Pradesh%20226004&t=&z=15&ie=UTF8&iwloc=&output=embed"
+        width="100%" height="340" style="border:0; display:block;" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Kumar Plastics showroom location">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-row">
+    <div>© <span id="year"></span> Kumar Plastics. All rights reserved.</div>
+    <div class="foot-links">
+      <a href="#home-range">Home range</a>
+      <a href="#office-range">Office range</a>
+      <a href="#brands">Brands</a>
+      <a href="kumar-plastics-catalogue-directory.pdf" download>Catalogues</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const swatches = document.querySelectorAll('.swatch');
+  const root = document.documentElement;
+  swatches.forEach(sw => {
+    sw.addEventListener('click', () => {
+      swatches.forEach(s => s.classList.remove('active'));
+      sw.classList.add('active');
+      root.style.setProperty('--accent', sw.dataset.color);
+    });
+  });
+
+  function handleSubmit(e){
+    e.preventDefault();
+    const btn = e.target.querySelector('button[type="submit"]');
+    const original = btn.textContent;
+    btn.textContent = 'Enquiry sent ✓';
+    btn.disabled = true;
+    setTimeout(() => { btn.textContent = original; btn.disabled = false; e.target.reset(); }, 2500);
+    return false;
+  }
+</script>
+
+</body>
+</html>
